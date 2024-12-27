@@ -1,0 +1,13 @@
+path: /home/sai/drone_ws/src/object_detect/data/VisImages/
+train: VisDrone2019-DET-train/images
+val: VisDrone2019-DET-test-dev/images
+test: VisDrone2019-DET-test-dev/images 
+
+
+names:
+  0: people
+  1: bicycle
+  2: car
+  3: truck
+  4: bus
+  5: motor
