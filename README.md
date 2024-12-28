@@ -1,4 +1,4 @@
-# VisDrone Object Detection
+# VisDrone Object Detection with SAHI
 
 This project implements various object detection models on the VisDrone dataset, comparing their performance with and without SAHI (Slicing Aided Hyper Inference) optimization.
 
