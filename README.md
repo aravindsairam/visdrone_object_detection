@@ -24,6 +24,11 @@ This project implements various object detection models on the VisDrone dataset,
 
 ## Results:
 
+
+- YOLOv11 - 40FPS
+- YOLOv8 - 45FPS
+- RTDETR - 20FPS
+
 <div align="center">
     <a href="./">
         <img src="./imgs/Figure_1.png" width="79%"/>
