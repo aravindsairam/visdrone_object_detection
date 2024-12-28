@@ -28,12 +28,7 @@ class model:
                                                 dropout = 0.5,
                                                 name = name)
         
-    def test(self, model_path, video_path):
-        # Load a pretrained model
-        model = RTDETR(model_path)
-
-        # Train the model
-        results = model(video_path, show=True, save=True)
+    
 
 
 if __name__ == "__main__":
@@ -51,18 +46,3 @@ if __name__ == "__main__":
     #                         batch_size = 16,
     #                         imgsz = 800,
     #                         name = "yolov11_800_16_400_coslr_dropout05")
-
-    # testing 
-    # test_model_path=  "/home/sai/drone_ws/src/object_detect/runs/detect/rtdetr_800_16_200_coslr_dropout05/weights/best.pt"
-    # video_path = "/home/sai/drone_ws/src/object_detect/test_vids/aerial.mp4"
-    # object_detection.test(test_model_path, video_path)
-
-
-
-
-# run/train19 is the best for images 
-# run/train20 is the best for images(people/pedestrians combined)
-# run/train34 is the RTDETR for images(all class combined)
-# run/train36 is the yolo11 for images(all class combined)
-# run/train37 is the yolo8 for images(all class combined)
-# run/train38 is the yolo8 for images(all class combined)/cosine lr/imgsz=720/batch=16/epochs=200

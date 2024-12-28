@@ -58,10 +58,10 @@ if __name__ == "__main__":
                     default='YOLO',
                     help='Type of model to use (YOLO or RTDETR)')
     parser.add_argument('--model', type=str, 
-                        default="/home/sai/drone_ws/src/visdrone_object_detection/runs/detect/rtdetr_800_16_200_coslr_dropout05/weights/best.pt",
+                        default="yolo11s.pt",
                         help='Path to YOLO model weights')
     parser.add_argument('--video', type=str, 
-                        default="/home/sai/drone_ws/src/visdrone_object_detection/test_vids/aerial.mp4",
+                        default="aerial.mp4",
                         help='Path to input video file')
     
     args = parser.parse_args()

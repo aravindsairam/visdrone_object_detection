@@ -5,6 +5,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 import random
+import argparse
 
 classes_ = {}
 
@@ -25,7 +26,7 @@ def combine_classes(cls):
     
     return None
 
-def visdrone2yolo(dir, type, dset):
+def visdrone2yolo(dir):
     from PIL import Image
     
 
@@ -38,9 +39,6 @@ def visdrone2yolo(dir, type, dset):
     Path(os.path.join(dir, 'labels')).mkdir(parents=True, exist_ok=True)  # make labels directory
     pbar = Path(os.path.join(dir, 'annotations')).glob('*.txt')
     pbar = [files for files in pbar]
-    if type == 'VID' or dset == 'train':
-        pbar = random.sample(pbar, int(len(pbar)*0.05))
-    new_list = []
     for f in pbar:
         img_size = Image.open(Path(os.path.join(dir, 'images', f.name)).with_suffix('.jpg')).size
         lines = []
@@ -62,13 +60,16 @@ def visdrone2yolo(dir, type, dset):
                 box = convert_box(img_size, tuple(map(int, row[:4])))
                 lines.append(f"{cls} {' '.join(f'{x:.6f}' for x in box)}\n")
                 with open(str(f).replace(f'{os.sep}annotations{os.sep}', f'{os.sep}labels{os.sep}'), 'w') as fl:
-                    fl.writelines(lines)  # write label.txt
+                    fl.writelines(lines)
     print(f"Classes: {classes_}")
 
-def convert2yolo(data_path, dataset, type, dset_type):
-    visdrone2yolo(os.path.join(data_path, dataset), type, dset_type)  # convert VisDrone annotations to YOLO labels
+def convert2yolo(data_path, datasets):
+    for dataset in datasets:
+        visdrone2yolo(os.path.join(data_path, dataset))
 
 if __name__ == '__main__':
-    convert2yolo("/home/sai/drone_ws/src/object_detect/data/VisImages", 'VisDrone2019-DET-train', 'DET', 'train')
-    convert2yolo("/home/sai/drone_ws/src/object_detect/data/VisImages",'VisDrone2019-DET-val', 'DET', 'val')
-    convert2yolo("/home/sai/drone_ws/src/object_detect/data/VisImages",'VisDrone2019-DET-test-dev', 'DET', 'test')
+    parser = argparse.ArgumentParser(description='Convert VisDrone annotations to YOLO labels')
+    parser.add_argument('--data_path', type=str, default='VisImages',
+                        help='Path to the VisDrone data directory')
+    args = parser.parse_args()
+    convert2yolo(args.data_path, ['VisDrone2019-DET-train', 'VisDrone2019-DET-val', 'VisDrone2019-DET-test-dev'])
