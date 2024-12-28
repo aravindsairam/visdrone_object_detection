@@ -24,10 +24,11 @@ This project implements various object detection models on the VisDrone dataset,
 
 ## Results:
 
+with RTX 3090, I have acheived the following FPS:
 
 - YOLOv11 - 40FPS
-- YOLOv8 - 45FPS
-- RTDETR - 20FPS
+- YOLOv8 - 75FPS
+- RTDETR - 25FPS
 
 <div align="center">
     <a href="./">
