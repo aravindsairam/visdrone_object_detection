@@ -18,9 +18,43 @@ This project implements various object detection models on the VisDrone dataset,
 
 ### Training
 
+Example :
+```
+# preprocess data
+$ python src/data_preprocessing.py --data_path VisImages/
+
+# train model
+$ python src/train.py --config_path cfg \
+--model_type [RTDETR|yolo11|yolov8] \
+--epochs 200 \
+--batch_size 16 \
+--imgsz 800 \
+--name run_name
+```
+
 ### Testing
 
+Example:
+
+```
+$ python src/test.py --model_type RTDETR \
+--model_path runs/detect/rtdetr/weights/best.pt \
+--video_path aerial.mp4
+```
+
 ### Generating Results
+
+Example :
+
+```
+$ python src/evaluate.py --test_data VisImages/VisDrone2019-DET-test-dev/images \
+--yaml_path cfg/VisDrone.yaml \
+--results_path runs/detect/test_output \
+--coco_json cfg/coco_annotations.json \
+--yolov8_weights runs/detect/yolov8_800_16_200_coslr_dropout05/weights/best.pt \
+--yolov11_weights runs/detect/yolo11_800_16_200_coslr_dropout05/weights/best.pt \
+--rtdetr_weights runs/detect/rtdetr_800_16_200_coslr_dropout05/weights/best.pt
+```
 
 ## Results:
 
