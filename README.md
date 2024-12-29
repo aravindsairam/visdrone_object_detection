@@ -6,6 +6,31 @@ This project implements various object detection models on the VisDrone dataset,
 - RTDETR with SAHI achieves the best overall performance but is much slower
 - All models show significant improvement in small object detection with SAHI
 
+![](imgs/yolov11.gif)
+
+### RT-DETR with and without SAHI
+
+<div align="center">
+    <a href="./">
+        <img src="./imgs/rtdetr_sahi.png" width="79%"/>
+    </a>
+</div>
+
+### YOLOv11 with and without SAHI
+
+<div align="center">
+    <a href="./">
+        <img src="./imgs/yolov11_sahi.png" width="79%"/>
+    </a>
+</div>
+
+### YOLOv8 with and without SAHI
+
+<div align="center">
+    <a href="./">
+        <img src="./imgs/yolov8_sahi.png" width="79%"/>
+    </a>
+</div>
 
 ## Implementation Details
 
